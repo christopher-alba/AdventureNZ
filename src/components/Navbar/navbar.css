@@ -1,0 +1,32 @@
+.navbar {
+  background: black;
+  color: white;
+  padding: 5px 0px 5px 0px;
+  display: flex;
+  width:100%;
+}
+
+.navbar-right{
+  margin-left: auto;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  margin-right:10%;
+}
+
+.navbar-left{
+  margin-left:10%;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar-link{
+  padding-right:5%;
+  padding-left:5%;
+  color:white;
+  text-decoration: none;
+}
+
+.navbar-brand{
+  width:200px;
+}
