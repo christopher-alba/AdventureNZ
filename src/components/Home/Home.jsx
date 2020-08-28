@@ -1,11 +1,12 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import './home.css'
 
+
 const Home = () => {
+  let [forcastTenDays, setForcastTenDays] = useState()
+  useEffect(() => {
 
-  let forcastTenDays = []
-
-
+  })
   const fetchWeather = () => {
     fetch("https://community-open-weather-map.p.rapidapi.com/forecast/daily?q=Auckland&lat=0&lon=0&cnt=10&units=metric", {
       "method": "GET",
@@ -19,11 +20,9 @@ const Home = () => {
       })
       .then(response => {
         console.log(response);
-        forcastTenDays = response.list.map(forcast => {
+        setForcastTenDays(response.list.map(forcast => {
           return forcast
-        })
-
-        console.log(forcastTenDays)})
+        }))})
       .catch(err => {
         console.log(err);
       });
@@ -46,9 +45,18 @@ const Home = () => {
           </div>
           <button onClick={() => fetchWeather()}></button>
         </div>
-
-
-
+      </div>
+      <div>
+        Hello There
+        {forcastTenDays && forcastTenDays.map(forcast => {
+          console.log(forcast);
+          let date = new Date(forcast.dt*1000)
+          return (
+            <div>
+              <p>Date: {date.toString()}</p>
+            </div>
+          )
+        })}
       </div>
     </>
   )
