@@ -1,0 +1,9 @@
+body {
+  background:url("https://silvertrips.in/wp-content/uploads/2019/06/new-zealand.jpg") !important;
+  background-repeat:no-repeat !important;
+  background-attachment: fixed !important;
+}
+
+html {
+  scroll-behavior: smooth !important;
+}
