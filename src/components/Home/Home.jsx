@@ -1,14 +1,35 @@
 import React, { useState, useEffect } from 'react'
 import './home.css'
+import { Dropdown } from 'semantic-ui-react'
 
 
 const Home = () => {
   let [forcastTenDays, setForcastTenDays] = useState()
+  let [selectedItem, setSelectedItem] = useState()
+
+  let cityOptions = [
+    {
+      key:'Auckland',
+      text:'Auckland',
+      value:'Auckland'
+    },
+    {
+      key:'Wellington',
+      text:'Wellington',
+      value:'Wellington'
+    },
+    {
+      key:'Christchurch',
+      text:'Christchurch',
+      value:'Christchurch'
+    }
+  ]
+
   useEffect(() => {
 
   })
   const fetchWeather = () => {
-    fetch("https://community-open-weather-map.p.rapidapi.com/forecast/daily?q=Auckland&lat=0&lon=0&cnt=10&units=metric", {
+    fetch(`https://community-open-weather-map.p.rapidapi.com/forecast/daily?q=${selectedItem}&lat=0&lon=0&cnt=10&units=metric`, {
       "method": "GET",
       "headers": {
         "x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
@@ -22,7 +43,9 @@ const Home = () => {
         console.log(response);
         setForcastTenDays(response.list.map(forcast => {
           return forcast
-        }))})
+        }))
+        
+      })
       .catch(err => {
         console.log(err);
       });
@@ -43,25 +66,37 @@ const Home = () => {
           <div className="home-icon">
             <i className="tree icon"></i>
           </div>
-          <button onClick={() => fetchWeather()}></button>
+
         </div>
       </div>
+      <Dropdown
+        placeholder='Select City'
+        fluid
+        selection
+        options={cityOptions}
+        onChange = {(evt) => {
+          console.log(evt.currentTarget.innerText)
+          setSelectedItem(evt.currentTarget.innerText)
+          fetchWeather()
+        }}
+      />
+      <button onClick={() => fetchWeather()}>Get Weather for Next 10 Days</button>
       <div>
-        Hello There
+        {selectedItem}
         {forcastTenDays && forcastTenDays.map(forcast => {
-          console.log(forcast);
-          let date = new Date(forcast.dt*1000)
-          return (
-            <div>
-              <p>Date: {date.toString()}</p>
-          <p>Temperature (Day): {forcast.feels_like.day}</p>
-          <p>Temperature (Night): {forcast.feels_like.night}</p>
-          <p>Temperature (Evening): {forcast.feels_like.eve}</p>
-          <p>Temperature (Morning): {forcast.feels_like.morn}</p>
-          <p>Weather: {forcast.weather[0].main}, {forcast.weather[0].description}</p>
-            </div>
-          )
-        })}
+        console.log(forcast);
+        let date = new Date(forcast.dt * 1000)
+        return (
+          <div>
+            <p>Date: {date.toString()}</p>
+            <p>Temperature (Day): {forcast.feels_like.day}</p>
+            <p>Temperature (Night): {forcast.feels_like.night}</p>
+            <p>Temperature (Evening): {forcast.feels_like.eve}</p>
+            <p>Temperature (Morning): {forcast.feels_like.morn}</p>
+            <p>Weather: {forcast.weather[0].main}, {forcast.weather[0].description}</p>
+          </div>
+        )
+      })}
       </div>
     </>
   )
