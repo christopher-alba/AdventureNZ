@@ -1,0 +1,22 @@
+img.home-landing{
+  width:100vw;
+}
+.home-landing-container{
+  height:40vh;
+  overflow:hidden;
+}
+
+.home-landing-text{
+  padding: 10%;
+}
+.home-inner{
+  display:flex;
+}
+.home-text{
+  width:70%;
+}
+.home-icon{
+  font-size:5rem;
+  margin: 0 auto 0 auto;
+  color:rgb(124, 180, 39);
+}

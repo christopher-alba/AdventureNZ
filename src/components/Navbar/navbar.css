@@ -1,9 +1,11 @@
 .navbar {
   background: black;
   color: white;
-  padding: 5px 0px 5px 0px;
+  padding: 15px;
   display: flex;
-  width:100%;
+  width:100vw;
+  position:sticky;
+  top:0px;
 }
 
 .navbar-right{
@@ -29,4 +31,5 @@
 
 .navbar-brand{
   width:200px;
+  font-size:2rem;
 }

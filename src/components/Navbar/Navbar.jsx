@@ -6,7 +6,7 @@ class Navbar extends Component {
     return (
       <div className="navbar">
         <div className="navbar-left">
-          <h2 className="navbar-brand">Tourism NZ</h2>
+          <div className="navbar-brand">Tourism NZ</div>
           <Link className="navbar-link" to="/">Home</Link>
           <Link className="navbar-link" to="/about">About</Link>
         </div>
