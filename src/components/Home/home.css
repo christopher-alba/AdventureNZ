@@ -20,3 +20,17 @@ img.home-landing{
   margin: 0 auto 0 auto;
   color:rgb(124, 180, 39);
 }
+.home-selection{
+  padding-left:10%;
+  padding-right:10%;
+  padding-bottom:10%;
+}
+.single-forcast{
+  padding-top:10%;
+  flex-grow:1;
+  min-width:200px;
+}
+.all-forcasts{
+  display:flex;
+  flex-wrap: wrap;
+}

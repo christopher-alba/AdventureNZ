@@ -1,27 +1,28 @@
 import React, { useState, useEffect } from 'react'
 import './home.css'
-import { Dropdown } from 'semantic-ui-react'
+import { Dropdown, Button } from 'semantic-ui-react'
 
 
 const Home = () => {
   let [forcastTenDays, setForcastTenDays] = useState()
   let [selectedItem, setSelectedItem] = useState()
+  let [selectedItemHeader, setSelectedItemHeader] = useState()
 
   let cityOptions = [
     {
-      key:'Auckland',
-      text:'Auckland',
-      value:'Auckland'
+      key: 'Auckland',
+      text: 'Auckland',
+      value: 'Auckland'
     },
     {
-      key:'Wellington',
-      text:'Wellington',
-      value:'Wellington'
+      key: 'Wellington',
+      text: 'Wellington',
+      value: 'Wellington'
     },
     {
-      key:'Christchurch',
-      text:'Christchurch',
-      value:'Christchurch'
+      key: 'Christchurch',
+      text: 'Christchurch',
+      value: 'Christchurch'
     }
   ]
 
@@ -44,7 +45,8 @@ const Home = () => {
         setForcastTenDays(response.list.map(forcast => {
           return forcast
         }))
-        
+        setSelectedItemHeader(selectedItem)
+
       })
       .catch(err => {
         console.log(err);
@@ -69,35 +71,39 @@ const Home = () => {
 
         </div>
       </div>
-      <Dropdown
-        placeholder='Select City'
-        fluid
-        selection
-        options={cityOptions}
-        onChange = {(evt) => {
-          console.log(evt.currentTarget.innerText)
-          setSelectedItem(evt.currentTarget.innerText)
-          fetchWeather()
-        }}
-      />
-      <button onClick={() => fetchWeather()}>Get Weather for Next 10 Days</button>
-      <div>
-        {selectedItem}
-        {forcastTenDays && forcastTenDays.map(forcast => {
-        console.log(forcast);
-        let date = new Date(forcast.dt * 1000)
-        return (
-          <div>
-            <p>Date: {date.toString()}</p>
-            <p>Temperature (Day): {forcast.feels_like.day}</p>
-            <p>Temperature (Night): {forcast.feels_like.night}</p>
-            <p>Temperature (Evening): {forcast.feels_like.eve}</p>
-            <p>Temperature (Morning): {forcast.feels_like.morn}</p>
-            <p>Weather: {forcast.weather[0].main}, {forcast.weather[0].description}</p>
-          </div>
-        )
-      })}
+      <div class="home-selection">
+        <Dropdown
+          placeholder='Select City'
+          fluid
+          selection
+          options={cityOptions}
+          onChange={async (evt) => {
+            console.log(evt.currentTarget.innerText)
+            await setSelectedItem(evt.currentTarget.innerText)
+            fetchWeather()
+          }}
+        />
+        <Button onClick={() => fetchWeather()}>Get Weather for Next 10 Days</Button>
+        <h3 style={{paddingTop:"10%"}}>{selectedItemHeader}</h3>
+        <div className="all-forcasts">
+          
+          {forcastTenDays && forcastTenDays.map(forcast => {
+            console.log(forcast);
+            let date = new Date(forcast.dt * 1000)
+            return (
+              <div className ="single-forcast">
+                <p>Date: {date.toString()}</p>
+                <p>Temperature (Day): {forcast.feels_like.day}</p>
+                <p>Temperature (Night): {forcast.feels_like.night}</p>
+                <p>Temperature (Evening): {forcast.feels_like.eve}</p>
+                <p>Temperature (Morning): {forcast.feels_like.morn}</p>
+                <p>Weather: {forcast.weather[0].main}, {forcast.weather[0].description}</p>
+              </div>
+            )
+          })}
+        </div>
       </div>
+
     </>
   )
 }

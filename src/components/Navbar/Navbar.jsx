@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './navbar.css'
 import { Link } from 'react-router-dom'
+import { Button } from 'semantic-ui-react'
 class Navbar extends Component {
   render() {
     return (
@@ -11,8 +12,8 @@ class Navbar extends Component {
           <Link className="navbar-link" to="/about">About</Link>
         </div>
         <div className="navbar-right">
-          <button>Sign In</button>
-          <button>Sign Up</button>
+          <Button primary>Sign In</Button>
+          <Button color='purple'>Sign Up</Button>
         </div>
 
       </div>
