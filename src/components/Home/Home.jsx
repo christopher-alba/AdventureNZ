@@ -54,6 +54,11 @@ const Home = () => {
           return (
             <div>
               <p>Date: {date.toString()}</p>
+          <p>Temperature (Day): {forcast.feels_like.day}</p>
+          <p>Temperature (Night): {forcast.feels_like.night}</p>
+          <p>Temperature (Evening): {forcast.feels_like.eve}</p>
+          <p>Temperature (Morning): {forcast.feels_like.morn}</p>
+          <p>Weather: {forcast.weather[0].main}, {forcast.weather[0].description}</p>
             </div>
           )
         })}
