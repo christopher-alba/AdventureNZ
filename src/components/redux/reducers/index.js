@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import selectDay from './selectDay'
+import selectDays from './selectDays'
 export default combineReducers({
-  selectDay
+  selectDays
 })

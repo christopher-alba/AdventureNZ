@@ -1,7 +1,7 @@
-export const selectDay = dayInfo => {
+export const selectDays = daysInfo => {
   return {
-    type: 'SELECT_DAY',
-    dayInfo
+    type: 'SELECT_DAYS',
+    daysInfo
   }
 }
 

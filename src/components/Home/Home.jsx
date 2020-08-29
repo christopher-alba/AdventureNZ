@@ -3,9 +3,9 @@ import './home.css'
 import { Dropdown, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from "react-redux";
-import {selectDay} from '../redux/actions/index'
+import {selectDays} from '../redux/actions/index'
 const Home = (props) => {
-  console.log(props.dayInfo);
+  console.log(props.daysInfo);
   let [forcastTenDays, setForcastTenDays] = useState()
   let [selectedItem, setSelectedItem] = useState()
   let [selectedItemHeader, setSelectedItemHeader] = useState()
@@ -50,7 +50,7 @@ const Home = (props) => {
         setForcastTenDays(response.list.map(forcast => {
           return forcast
         }))
-        props.selectDay(response.list.map(forcast => {
+        props.selectDays(response.list.map(forcast => {
           return forcast
         }))
         setSelectedItemHeader(selectedItem)
@@ -175,7 +175,7 @@ const Home = (props) => {
         <h3 className="cityName" style={{ paddingTop: "10%", fontSize: "3rem", color: "white" }}>{selectedItemHeader}</h3>
         <div className="all-forcasts">
           
-          {props.dayInfo.length > 0 && props.dayInfo.map(forcast => {
+          {props.daysInfo.length > 0 && props.daysInfo.map(forcast => {
             console.log(forcast);
             let date = new Date(forcast.dt * 1000)
             date = getDate(date)
@@ -200,15 +200,15 @@ const Home = (props) => {
 }
 
 function mapStateToProps(state) {
-  console.log(state.selectDay.dayInfo);
+  console.log(state.selectDays.daysInfo);
   return {
-    dayInfo: state.selectDay.dayInfo
+    daysInfo: state.selectDays.daysInfo
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    selectDay: (dayInfo) => dispatch(selectDay(dayInfo))
+    selectDays: (daysInfo) => dispatch(selectDays(daysInfo))
   };
 }
 
