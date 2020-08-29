@@ -1,7 +1,28 @@
-import React, {Component} from 'react'
+import React, { Component, useState, useEffect } from 'react'
+import { connect } from 'react-redux'
+import './activities.css'
+import { getDate } from '../helpers'
 
-const activities = () => {
-  return <div>Activities</div>
+class activities extends Component {
+  componentDidMount = () => {
+    document.documentElement.scrollTop = 0
+  }
+
+  render = () => {
+    return (
+      <div className="activities-dayInfo">
+        <p>{getDate(this.props.dayInfo.dt)}</p>
+        <p>{this.props.cityName}</p>
+      </div>
+    )
+  }
 }
 
-export default activities
+const mapStateToProps = (state) => {
+  return {
+    dayInfo: state.selectDay.dayInfo,
+    cityName: state.selectCity.cityName
+  }
+}
+
+export default connect(mapStateToProps)(activities)

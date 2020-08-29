@@ -3,7 +3,7 @@ import './home.css'
 import { Dropdown, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from "react-redux";
-import {selectDays, selectCity} from '../redux/actions/index'
+import {selectDays, selectCity, selectDay} from '../redux/actions/index'
 const Home = (props) => {
   console.log(props);
   let [forcastTenDays, setForcastTenDays] = useState()
@@ -181,7 +181,7 @@ const Home = (props) => {
             let date = new Date(forcast.dt * 1000)
             date = getDate(date)
             return (
-              <div className="single-forcast" onClick={() => getActivities()}>
+              <div className="single-forcast" onClick={() => props.selectDay(forcast)}>
                 <div className="date info">
                   {date}
                   <Link to={`/activities/${forcast.weather[0].main}`} ><Button color='grey' y>Find Activities</Button></Link>
@@ -204,14 +204,16 @@ function mapStateToProps(state) {
   console.log(state);
   return {
     daysInfo: state.selectDays.daysInfo,
-    cityName: state.selectCity.cityName
+    cityName: state.selectCity.cityName,
+    dayInfo: state.selectDay.dayInfo
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     selectDays: (daysInfo) => dispatch(selectDays(daysInfo)),
-    selectCity: (cityName) => dispatch(selectCity(cityName))
+    selectCity: (cityName) => dispatch(selectCity(cityName)),
+    selectDay: (dayInfo) => dispatch(selectDay(dayInfo))
   };
 }
 

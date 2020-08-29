@@ -16,6 +16,6 @@ export const selectCity = cityName => {
 export const selectDay = dayInfo => {
   return {
     type: 'SELECT_DAY',
-    dayinfo
+    dayInfo
   }
 }
