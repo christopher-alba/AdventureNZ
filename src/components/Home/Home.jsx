@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import './home.css'
 import { Dropdown, Button } from 'semantic-ui-react'
-import {Link} from 'react-router-dom'
-const Home = () => {
+import { Link } from 'react-router-dom'
+import { connect } from "react-redux";
+import {selectDay} from '../redux/actions/index'
+const Home = (props) => {
+  console.log(props.dayInfo);
   let [forcastTenDays, setForcastTenDays] = useState()
   let [selectedItem, setSelectedItem] = useState()
   let [selectedItemHeader, setSelectedItemHeader] = useState()
@@ -29,7 +32,7 @@ const Home = () => {
 
   })
   const getActivities = () => {
-    
+
   }
   const fetchWeather = () => {
     fetch(`https://community-open-weather-map.p.rapidapi.com/forecast/daily?q=${selectedItem}&lat=0&lon=0&cnt=10&units=metric`, {
@@ -43,8 +46,11 @@ const Home = () => {
         return response.json()
       })
       .then(response => {
-        console.log(response);
+        // console.log(response);
         setForcastTenDays(response.list.map(forcast => {
+          return forcast
+        }))
+        props.selectDay(response.list.map(forcast => {
           return forcast
         }))
         setSelectedItemHeader(selectedItem)
@@ -54,8 +60,8 @@ const Home = () => {
         document.getElementsByClassName("cityName")[0].scrollIntoView()
       })
       .catch(err => {
-        console.log(err);
-        console.log(process.env.API_KEY);
+        // console.log(err);
+        // console.log(process.env.API_KEY);
       });
   }
 
@@ -155,7 +161,7 @@ const Home = () => {
             selection
             options={cityOptions}
             onChange={async (evt) => {
-              console.log(evt.currentTarget.innerText)
+              // console.log(evt.currentTarget.innerText)
               await setSelectedItem(evt.currentTarget.innerText)
             }}
           />
@@ -168,8 +174,8 @@ const Home = () => {
       <div className="weather-main-container">
         <h3 className="cityName" style={{ paddingTop: "10%", fontSize: "3rem", color: "white" }}>{selectedItemHeader}</h3>
         <div className="all-forcasts">
-
-          {forcastTenDays && forcastTenDays.map(forcast => {
+          
+          {props.dayInfo.length > 0 && props.dayInfo.map(forcast => {
             console.log(forcast);
             let date = new Date(forcast.dt * 1000)
             date = getDate(date)
@@ -177,7 +183,7 @@ const Home = () => {
               <div className="single-forcast" onClick={() => getActivities()}>
                 <div className="date info">
                   {date}
-                  <Link to="/activities" ><Button secondary>Find Activities</Button></Link>
+                  <Link to={`/activities/${forcast.weather[0].main}`} ><Button color='grey' y>Find Activities</Button></Link>
                 </div>
                 <div className="day info"><strong>Day:</strong> {forcast.feels_like.day} °C </div>
                 <div className="night info"><strong>Night: </strong> {forcast.feels_like.night} °C</div>
@@ -193,4 +199,18 @@ const Home = () => {
   )
 }
 
-export default Home
+function mapStateToProps(state) {
+  console.log(state.selectDay.dayInfo);
+  return {
+    dayInfo: state.selectDay.dayInfo
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    selectDay: (dayInfo) => dispatch(selectDay(dayInfo))
+  };
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

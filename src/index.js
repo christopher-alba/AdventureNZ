@@ -5,13 +5,20 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { HashRouter as Router } from "react-router-dom"
 import 'semantic-ui-css/semantic.min.css'
-ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
+import { createStore } from 'redux'
+import { Provider } from 'react-redux';
+import reducers from './components/redux/reducers/index'
+const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
-  </React.StrictMode>,
+ReactDOM.render(
+  <Provider store={store}>
+    <React.StrictMode>
+      <Router>
+        <App />
+      </Router>
+    </React.StrictMode>
+  </Provider>
+  ,
   document.getElementById('root')
 );
 
