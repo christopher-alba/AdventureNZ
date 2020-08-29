@@ -4,3 +4,10 @@ export const selectDay = dayInfo => {
     dayInfo
   }
 }
+
+export const selectCity = cityName => {
+  return {
+    type: 'SELECT_CITY',
+    cityName
+  }
+}
