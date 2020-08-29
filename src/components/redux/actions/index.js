@@ -6,6 +6,7 @@ export const selectDays = daysInfo => {
 }
 
 export const selectCity = cityName => {
+  console.log(cityName);
   return {
     type: 'SELECT_CITY',
     cityName

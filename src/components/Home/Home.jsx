@@ -3,9 +3,9 @@ import './home.css'
 import { Dropdown, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from "react-redux";
-import {selectDays} from '../redux/actions/index'
+import {selectDays, selectCity} from '../redux/actions/index'
 const Home = (props) => {
-  console.log(props.daysInfo);
+  console.log(props);
   let [forcastTenDays, setForcastTenDays] = useState()
   let [selectedItem, setSelectedItem] = useState()
   let [selectedItemHeader, setSelectedItemHeader] = useState()
@@ -54,6 +54,7 @@ const Home = (props) => {
           return forcast
         }))
         setSelectedItemHeader(selectedItem)
+        props.selectCity(selectedItem)
 
       })
       .then(() => {
@@ -160,9 +161,10 @@ const Home = (props) => {
             fluid
             selection
             options={cityOptions}
-            onChange={async (evt) => {
-              // console.log(evt.currentTarget.innerText)
-              await setSelectedItem(evt.currentTarget.innerText)
+            onChange={(evt) => {
+              console.log(evt.currentTarget.innerText)
+              setSelectedItem(evt.currentTarget.innerText)
+              
             }}
           />
           <Button onClick={() => fetchWeather()}>Get Weather for Next 10 Days</Button>
@@ -172,11 +174,10 @@ const Home = (props) => {
       </div>
 
       <div className="weather-main-container">
-        <h3 className="cityName" style={{ paddingTop: "10%", fontSize: "3rem", color: "white" }}>{selectedItemHeader}</h3>
+        <h3 className="cityName" style={{ paddingTop: "10%", fontSize: "3rem", color: "white" }}>{props.cityName}</h3>
         <div className="all-forcasts">
           
           {props.daysInfo.length > 0 && props.daysInfo.map(forcast => {
-            console.log(forcast);
             let date = new Date(forcast.dt * 1000)
             date = getDate(date)
             return (
@@ -200,15 +201,17 @@ const Home = (props) => {
 }
 
 function mapStateToProps(state) {
-  console.log(state.selectDays.daysInfo);
+  console.log(state);
   return {
-    daysInfo: state.selectDays.daysInfo
+    daysInfo: state.selectDays.daysInfo,
+    cityName: state.selectCity.cityName
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    selectDays: (daysInfo) => dispatch(selectDays(daysInfo))
+    selectDays: (daysInfo) => dispatch(selectDays(daysInfo)),
+    selectCity: (cityName) => dispatch(selectCity(cityName))
   };
 }
 
