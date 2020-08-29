@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './home.css'
 import { Dropdown, Button } from 'semantic-ui-react'
-
+import {Link} from 'react-router-dom'
 const Home = () => {
   let [forcastTenDays, setForcastTenDays] = useState()
   let [selectedItem, setSelectedItem] = useState()
@@ -175,7 +175,10 @@ const Home = () => {
             date = getDate(date)
             return (
               <div className="single-forcast" onClick={() => getActivities()}>
-                <div className="date info">{date}</div>
+                <div className="date info">
+                  {date}
+                  <Link to="/activities" ><Button secondary>Find Activities</Button></Link>
+                </div>
                 <div className="day info"><strong>Day:</strong> {forcast.feels_like.day} °C </div>
                 <div className="night info"><strong>Night: </strong> {forcast.feels_like.night} °C</div>
                 <div className="evening info"><strong> Evening:</strong> {forcast.feels_like.eve} °C</div>
