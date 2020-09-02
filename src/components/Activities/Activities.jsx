@@ -1,16 +1,15 @@
-import {GoogleMap, Marker} from "react-google-maps"
+import { GoogleMap, Marker } from "react-google-maps"
 import React, { Component, useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import './activities.css'
 import { getDate } from '../helpers'
-import Map from '../Map/Map'
 
 class activities extends Component {
   componentDidMount = () => {
     document.documentElement.scrollTop = 0
   }
 
-  
+
 
   render = () => {
     console.log(this.props.dayInfo);
@@ -27,12 +26,13 @@ class activities extends Component {
         </div>
         <div className="activities-list">
           <h1>Activities when {this.props.dayInfo.weather[0].description}</h1>
-          <Map googleMapURL= {`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_API_KEY_GOOGLE}`}
-          loadingElement={<div style={{height:"100%"}} />}
-          containerElement={<div style={{height:"80vh", width:"80vw", margin: "0 auto 0 auto"}} />}
-          mapElement={<div style={{height:"100%"}} />}
-          ></Map>
-        </div>       
+          <iframe
+            width="600"
+            height="450"
+            frameBorder="0" style={{border:"0"}}
+            src={`https://www.google.com/maps/embed/v1/search?key=${process.env.REACT_APP_API_KEY_GOOGLE}&q=Auckland+parks`} allowFullScreen>
+          </iframe>
+        </div>
       </>
     )
   }
