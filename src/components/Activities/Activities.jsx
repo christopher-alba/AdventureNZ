@@ -9,12 +9,13 @@ class activities extends Component {
 
   state = {
     activity: "tourism",
+    searchQuery: ""
   }
 
   componentDidMount = () => {
     document.documentElement.scrollTop = 0
-    if(this.props.dayInfo.weather[0].main.includes("Rain")){
-      this.setState({activity: "indoors"})
+    if (this.props.dayInfo.weather[0].main.includes("Rain")) {
+      this.setState({ activity: "indoors" })
     }
   }
 
@@ -35,18 +36,32 @@ class activities extends Component {
         </div>
         <div className="activities-list">
           <h1>Activities when {this.props.dayInfo.weather[0].description}</h1>
-          { !this.props.dayInfo.weather[0].main.includes("Rain") && <Button onClick={() => {
-            this.setState({activity:"Parks"})
-          }}>Parks</Button>}
-          <Button onClick={() => {
-            this.setState({activity:"Cafes"})
-          }}>Cafes</Button>
-          <Button onClick={() => {
-            this.setState({activity:"Tourism"})
-          }}>General Tourism</Button>
-          <Button onClick={() => {
-            this.setState({activity:"Indoors"})
-          }}>Indoors</Button>
+          <div style={{display:"flex", flexWrap:"wrap"}}>
+            {!this.props.dayInfo.weather[0].main.includes("Rain") && <Button className="activityButton" onClick={() => {
+              this.setState({ activity: "Parks" })
+            }}>Parks</Button>}
+            <Button className="activityButton" onClick={() => {
+              this.setState({ activity: "Cafes" })
+            }}>Cafes</Button>
+            <Button className="activityButton" onClick={() => {
+              this.setState({ activity: "Tourism" })
+            }}>General Tourism</Button>
+            <Button className="activityButton" onClick={() => {
+              this.setState({ activity: "Indoors" })
+            }}>Indoors</Button>
+            <Button className="activityButton" onClick={() => {
+              this.setState({ activity: "Restaurants" })
+            }}>Restaurants</Button>
+            <div style={{ position: "inline-block", margin: "5px", display:"block" ,width:"100%"}}>
+              <input onChange={(evt) => {
+                this.setState({searchQuery: evt.target.value})
+              }}className="searchbar" type="text" id="fname" name="fname" placeholder="Find your place!"></input>
+              <button onClick={() => {
+                this.setState({activity: this.state.searchQuery})
+              }}className="searchButton">Search</button>
+            </div>
+
+          </div>
           <iframe
             width="100%"
             height="500px"

@@ -18,3 +18,27 @@
   background:white;
   padding:10%;
 }
+
+.searchbar{
+  border:none;
+  padding:8px;
+  background:rgb(230, 230, 230);
+  width: 90%;
+}
+button.searchButton{
+  background:black;
+  color:white;
+  border:none;
+  padding:8px 15px 8px 15px;
+  width:10%;
+}
+button.searchButton:focus{
+outline: none;
+}
+button.searchButton:hover{
+  cursor: pointer;
+  background:rgb(34, 34, 34);
+  }
+.activityButton{
+  margin-bottom:5px !important;
+}
