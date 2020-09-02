@@ -13,6 +13,9 @@ class activities extends Component {
 
   componentDidMount = () => {
     document.documentElement.scrollTop = 0
+    if(this.props.dayInfo.weather[0].main.includes("Rain")){
+      this.setState({activity: "indoors"})
+    }
   }
 
 
