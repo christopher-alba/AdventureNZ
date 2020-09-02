@@ -2,7 +2,19 @@
   margin-top:10% !important;
   font-size:3rem;
   color:white;
-  font-weight:800;
+  height:fit-content;
   margin-left:10%;
+  display:inline-block;
+  padding:10px;
+  background:rgba(0, 0, 0, 0.61);
+}
 
+.activities-dayInfo p.info{
+  margin-bottom:0px;
+  font-size:2rem;
+}
+
+.activities-list{
+  background:white;
+  padding:10%;
 }
