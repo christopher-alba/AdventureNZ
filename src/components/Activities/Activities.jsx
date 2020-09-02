@@ -43,6 +43,9 @@ class activities extends Component {
             <Button className="activityButton" onClick={() => {
               this.setState({ activity: "Cafes" })
             }}>Cafes</Button>
+             <Button className="activityButton" onClick={() => {
+              this.setState({ activity: "Shopping" })
+            }}>Shopping</Button>
             <Button className="activityButton" onClick={() => {
               this.setState({ activity: "Tourism" })
             }}>General Tourism</Button>
@@ -52,7 +55,7 @@ class activities extends Component {
             <Button className="activityButton" onClick={() => {
               this.setState({ activity: "Restaurants" })
             }}>Restaurants</Button>
-            <div style={{ position: "inline-block", margin: "5px", display:"block" ,width:"100%"}}>
+            <div style={{ position: "inline-block", marginBottom: "5px", display:"block" ,width:"100%"}}>
               <input onChange={(evt) => {
                 this.setState({searchQuery: evt.target.value})
               }}className="searchbar" type="text" id="fname" name="fname" placeholder="Find your place!"></input>
