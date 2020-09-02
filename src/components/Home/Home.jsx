@@ -25,6 +25,91 @@ const Home = (props) => {
       key: 'Christchurch',
       text: 'Christchurch',
       value: 'Christchurch'
+    },
+    {
+      key: 'Hamilton',
+      text: 'Hamilton',
+      value: 'Hamilton'
+    },
+    {
+      key: 'Tauranga',
+      text: 'Tauranga',
+      value: 'Tauranga'
+    },
+    {
+      key: 'Lower Hutt',
+      text: 'Lower Hutt',
+      value: 'Lower Hutt'
+    },
+    {
+      key: 'Dunedin',
+      text: 'Dunedin',
+      value: 'Dunedin'
+    },
+    {
+      key: 'Palmerston North',
+      text: 'Palmerston North',
+      value: 'Palmerston North'
+    },
+    {
+      key: 'Napier',
+      text: 'Napier',
+      value: 'Napier'
+    },
+    {
+      key: 'Porirua',
+      text: 'Porirua',
+      value: 'Porirua'
+    },
+    {
+      key: 'New Plymouth',
+      text: 'New Plymouth',
+      value: 'New Plymouth'
+    },
+    {
+      key: 'Rotorua',
+      text: 'Rotorua',
+      value: 'Rotorua'
+    },
+    {
+      key: 'Whangarei',
+      text: 'Whangarei',
+      value: 'Whangarei'
+    },
+    {
+      key: 'Hibiscus Coast',
+      text: 'Hibiscus Coast',
+      value: 'Hibiscus Coast'
+    },
+    {
+      key: 'Nelson',
+      text: 'Nelson',
+      value: 'Nelson'
+    },
+    {
+      key: 'Invercargill',
+      text: 'Invercargill',
+      value: 'Invercargill'
+    },
+    {
+      key: 'Hastings',
+      text: 'Hastings',
+      value: 'Hastings'
+    },
+    {
+      key: 'Upper Hutt',
+      text: 'Upper Hutt',
+      value: 'Upper Hutt'
+    },
+    {
+      key: 'Whanganui',
+      text: 'Whanganui',
+      value: 'Whanganui'
+    },
+    {
+      key: 'Gisborne',
+      text: 'Gisborne',
+      value: 'Gisborne'
     }
   ]
 
