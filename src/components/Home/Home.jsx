@@ -9,6 +9,7 @@ const Home = (props) => {
   let [forcastTenDays, setForcastTenDays] = useState()
   let [selectedItem, setSelectedItem] = useState()
   let [selectedItemHeader, setSelectedItemHeader] = useState()
+  let [searchQuery, setSearchQuery] = useState("")
 
   let cityOptions = [
     {
@@ -116,9 +117,7 @@ const Home = (props) => {
   useEffect(() => {
 
   })
-  const getActivities = () => {
 
-  }
   const fetchWeather = () => {
     fetch(`https://community-open-weather-map.p.rapidapi.com/forecast/daily?q=${selectedItem}&lat=0&lon=0&cnt=10&units=metric`, {
       "method": "GET",
@@ -253,7 +252,13 @@ const Home = (props) => {
             }}
           />
           <Button onClick={() => fetchWeather()}>Get Weather for Next 10 Days</Button>
-
+          <p>Cant find your location? Try search for it below!</p>
+          <input type="text" placeholder="Find your location!" onChange={(evt) => {
+            setSearchQuery(evt.target.value)
+          }}/>
+          <button onClick={() => {
+            setSelectedItem(searchQuery, fetchWeather())
+          }}>Search</button>
 
         </div>
       </div>
