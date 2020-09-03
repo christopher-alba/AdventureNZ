@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/AdventureNZ/static/css/main.6dc764cd.chunk.css",
+    "main.js": "/AdventureNZ/static/js/main.c2f1e1c5.chunk.js",
+    "main.js.map": "/AdventureNZ/static/js/main.c2f1e1c5.chunk.js.map",
+    "runtime-main.js": "/AdventureNZ/static/js/runtime-main.186c117d.js",
+    "runtime-main.js.map": "/AdventureNZ/static/js/runtime-main.186c117d.js.map",
+    "static/css/2.9cec7a80.chunk.css": "/AdventureNZ/static/css/2.9cec7a80.chunk.css",
+    "static/js/2.5aece17d.chunk.js": "/AdventureNZ/static/js/2.5aece17d.chunk.js",
+    "static/js/2.5aece17d.chunk.js.map": "/AdventureNZ/static/js/2.5aece17d.chunk.js.map",
+    "index.html": "/AdventureNZ/index.html",
+    "precache-manifest.da29cb3e264e2a6850c5da13fc3fec6a.js": "/AdventureNZ/precache-manifest.da29cb3e264e2a6850c5da13fc3fec6a.js",
+    "service-worker.js": "/AdventureNZ/service-worker.js",
+    "static/css/2.9cec7a80.chunk.css.map": "/AdventureNZ/static/css/2.9cec7a80.chunk.css.map",
+    "static/css/main.6dc764cd.chunk.css.map": "/AdventureNZ/static/css/main.6dc764cd.chunk.css.map",
+    "static/js/2.5aece17d.chunk.js.LICENSE.txt": "/AdventureNZ/static/js/2.5aece17d.chunk.js.LICENSE.txt",
+    "static/media/semantic.min.css": "/AdventureNZ/static/media/outline-icons.ef60a4f6.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.186c117d.js",
+    "static/css/2.9cec7a80.chunk.css",
+    "static/js/2.5aece17d.chunk.js",
+    "static/css/main.6dc764cd.chunk.css",
+    "static/js/main.c2f1e1c5.chunk.js"
+  ]
+}
