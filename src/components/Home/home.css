@@ -12,6 +12,7 @@ img.home-landing{
 }
 .home-inner{
   display:flex;
+  margin-bottom:50px;
 }
 .home-text{
   width:70%;
@@ -33,12 +34,6 @@ img.home-landing{
   background:rgba(255, 255, 255, 0.658);
   transition:500ms;
 }
-.single-forcast:hover{
-  transform: scale(1.03);
-  box-shadow:3px 3px 3px rgba(0, 0, 0, 0.651);
-  cursor: pointer;
-  background:white;
-}
 .all-forcasts{
   display:flex;
   flex-wrap: wrap;
@@ -46,6 +41,7 @@ img.home-landing{
 .date{
   background:black;
   color:white;
+  text-align:center;
 }
 .info{
   padding:10px;
@@ -53,4 +49,8 @@ img.home-landing{
 .weather-main-container{
   padding:10%;
   padding-top:0;
+}
+.homeImage{
+  height:300px;
+  width:auto;
 }

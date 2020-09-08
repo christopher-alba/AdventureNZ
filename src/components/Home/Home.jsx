@@ -3,7 +3,7 @@ import './home.css'
 import { Dropdown, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from "react-redux";
-import {selectDays, selectCity, selectDay} from '../redux/actions/index'
+import { selectDays, selectCity, selectDay } from '../redux/actions/index'
 const Home = (props) => {
   console.log(props);
   let [forcastTenDays, setForcastTenDays] = useState()
@@ -233,11 +233,11 @@ const Home = (props) => {
           <div className="home-text">
             <p>  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis voluptatibus incidunt enim natus reiciendis expedita veritatis impedit temporibus officiis odio maiores voluptas dolore cumque odit iure alias mollitia, velit, voluptates exercitationem corrupti. Atque voluptatem expedita cum iusto ipsam voluptatum quae architecto repudiandae mollitia officia provident quibusdam impedit, aspernatur tenetur enim.</p>
           </div>
-          <div className="home-icon">
-            <i className="tree icon"></i>
-          </div>
 
         </div>
+        <img className="homeImage" src="https://img.traveltriangle.com/blog/wp-content/uploads/2015/09/Auckland.jpg" alt="" />
+        <img className="homeImage" src="https://www.firstlighttravel.com/sites/default/files/styles/article_800x/public/2018-11/abel-tasman-kayaking.jpg?itok=nKgEXN3D" alt="" />
+        <img className="homeImage" src="https://mustdonewzealand.co.nz/wp-content/uploads/2016/12/hobbiton-movie-set-tours-matamata-from-Rotorua-nz-560x460.jpg" alt=""/>
         <div className="home-selection">
           <h2>Get Weather and Find Activities</h2>
           <Dropdown
@@ -248,15 +248,15 @@ const Home = (props) => {
             onChange={(evt) => {
               console.log(evt.currentTarget.innerText)
               setSelectedItem(evt.currentTarget.innerText)
-              
+
             }}
           />
           <Button onClick={() => fetchWeather()}>Get Weather for Next 10 Days</Button>
           <p>Cant find your location? Try search for it below!</p>
           <input type="text" placeholder="Find your location!" onChange={(evt) => {
             setSearchQuery(evt.target.value)
-          }}/>
-          <button onClick={() => {
+          }} />
+          <button type="submit" onClick={() => {
             setSelectedItem(searchQuery, fetchWeather())
           }}>Search</button>
 
@@ -266,7 +266,7 @@ const Home = (props) => {
       <div className="weather-main-container">
         <h3 className="cityName" style={{ paddingTop: "10%", fontSize: "3rem", color: "white" }}>{props.cityName}</h3>
         <div className="all-forcasts">
-          
+
           {props.daysInfo.length > 0 && props.daysInfo.map(forcast => {
             let date = new Date(forcast.dt * 1000)
             date = getDate(date)
