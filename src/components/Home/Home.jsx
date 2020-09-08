@@ -133,7 +133,7 @@ const Home = (props) => {
         props.selectDays(response.list.map(forcast => {
           return forcast
         }))
-        setSelectedItemHeader(selectedItem)
+        setSelectedItemHeader(search? search: selectedItem)
         props.selectCity(search? search: selectedItem)
 
       })
