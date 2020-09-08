@@ -114,12 +114,8 @@ const Home = (props) => {
     }
   ]
 
-  useEffect(() => {
-
-  })
-
-  const fetchWeather = () => {
-    fetch(`https://community-open-weather-map.p.rapidapi.com/forecast/daily?q=${selectedItem}&lat=0&lon=0&cnt=10&units=metric`, {
+  const fetchWeather = (search) => {
+    fetch(`https://community-open-weather-map.p.rapidapi.com/forecast/daily?q=${search? search: selectedItem}&lat=0&lon=0&cnt=10&units=metric`, {
       "method": "GET",
       "headers": {
         "x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
@@ -145,11 +141,10 @@ const Home = (props) => {
         document.getElementsByClassName("cityName")[0].scrollIntoView()
       })
       .catch(err => {
-        // console.log(err);
+        console.log(err);
         // console.log(process.env.API_KEY);
       });
   }
-
   const getDate = (date) => {
     let day = date.getDate()
     let month = date.getMonth()
@@ -237,7 +232,7 @@ const Home = (props) => {
         </div>
         <img className="homeImage" src="https://img.traveltriangle.com/blog/wp-content/uploads/2015/09/Auckland.jpg" alt="" />
         <img className="homeImage" src="https://www.firstlighttravel.com/sites/default/files/styles/article_800x/public/2018-11/abel-tasman-kayaking.jpg?itok=nKgEXN3D" alt="" />
-        <img className="homeImage" src="https://mustdonewzealand.co.nz/wp-content/uploads/2016/12/hobbiton-movie-set-tours-matamata-from-Rotorua-nz-560x460.jpg" alt=""/>
+        <img className="homeImage" src="https://mustdonewzealand.co.nz/wp-content/uploads/2016/12/hobbiton-movie-set-tours-matamata-from-Rotorua-nz-560x460.jpg" alt="" />
         <div className="home-selection">
           <h2>Get Weather and Find Activities</h2>
           <Dropdown
@@ -253,13 +248,16 @@ const Home = (props) => {
           />
           <Button onClick={() => fetchWeather()}>Get Weather for Next 10 Days</Button>
           <p>Cant find your location? Try search for it below!</p>
-          <input type="text" placeholder="Find your location!" onChange={(evt) => {
-            setSearchQuery(evt.target.value)
-          }} />
-          <button type="submit" onClick={() => {
-            setSelectedItem(searchQuery, fetchWeather())
-          }}>Search</button>
-
+          <form action="">
+            <input type="text" placeholder="Find your location!" onChange={(evt) => {
+              console.log(evt.target.value);
+              setSearchQuery(evt.target.value)
+              setSelectedItem(searchQuery)
+            }} />
+            <button type="submit" onClick={() => {           
+              fetchWeather(searchQuery)
+            }}>Search</button>
+          </form>
         </div>
       </div>
 
