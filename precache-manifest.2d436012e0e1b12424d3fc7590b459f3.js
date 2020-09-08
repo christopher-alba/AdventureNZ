@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "342843cfc9adf98b19fcc87183a1fda5",
+    "revision": "70a7a6650811042cd7fcfa00a9866277",
     "url": "/AdventureNZ/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/AdventureNZ/static/css/2.9cec7a80.chunk.css"
   },
   {
-    "revision": "6dce226d93d16f9fec89",
+    "revision": "f5e9f0794999e5d8cd74",
     "url": "/AdventureNZ/static/css/main.6dc764cd.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/AdventureNZ/static/js/2.5aece17d.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "6dce226d93d16f9fec89",
-    "url": "/AdventureNZ/static/js/main.f69021e7.chunk.js"
+    "revision": "f5e9f0794999e5d8cd74",
+    "url": "/AdventureNZ/static/js/main.5417555b.chunk.js"
   },
   {
     "revision": "e8c93b3f6061aea41c99",
