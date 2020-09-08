@@ -134,7 +134,7 @@ const Home = (props) => {
           return forcast
         }))
         setSelectedItemHeader(selectedItem)
-        props.selectCity(selectedItem)
+        props.selectCity(search? search: selectedItem)
 
       })
       .then(() => {
