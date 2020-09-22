@@ -53,6 +53,7 @@ img.home-landing{
 .homeImage{
   height:300px;
   width:auto;
+  max-width:100%;
 }
 
 .selectCity{

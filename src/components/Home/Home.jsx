@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './home.css'
-import { Dropdown, Button } from 'semantic-ui-react'
+import { Dropdown, Button, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from "react-redux";
 import { selectDays, selectCity, selectDay } from '../redux/actions/index'
@@ -247,7 +247,7 @@ const Home = (props) => {
 
               }}
             />
-            <Button className="dropdownSubmit" onClick={() => fetchWeather()}>Get Weather for Next 10 Days</Button>
+            <Button className="dropdownSubmit" onClick={() => fetchWeather()}><Icon name='sun'/></Button>
           </div>
           
           <p>Cant find your location? Try search for it below!</p>
@@ -259,7 +259,7 @@ const Home = (props) => {
             }} />
             <button className="searchbarSubmit"type="submit" onClick={() => {           
               fetchWeather(searchQuery)
-            }}>Get Weather for Next 10 Days</button>
+            }}><Icon name='sun'/></button>
           </form>
         </div>
       </div>
