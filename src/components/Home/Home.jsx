@@ -235,28 +235,31 @@ const Home = (props) => {
         <img className="homeImage" src="https://mustdonewzealand.co.nz/wp-content/uploads/2016/12/hobbiton-movie-set-tours-matamata-from-Rotorua-nz-560x460.jpg" alt="" />
         <div className="home-selection">
           <h2>Get Weather and Find Activities</h2>
-          <Dropdown
-            placeholder='Select City'
-            fluid
-            selection
-            options={cityOptions}
-            onChange={(evt) => {
-              console.log(evt.currentTarget.innerText)
-              setSelectedItem(evt.currentTarget.innerText)
+          <div className="selectCity">
+            <Dropdown
+              placeholder='Select City'
+              fluid
+              selection
+              options={cityOptions}
+              onChange={(evt) => {
+                console.log(evt.currentTarget.innerText)
+                setSelectedItem(evt.currentTarget.innerText)
 
-            }}
-          />
-          <Button onClick={() => fetchWeather()}>Get Weather for Next 10 Days</Button>
+              }}
+            />
+            <Button className="dropdownSubmit" onClick={() => fetchWeather()}>Get Weather for Next 10 Days</Button>
+          </div>
+          
           <p>Cant find your location? Try search for it below!</p>
-          <form action="">
+          <form className="searchBar" action="">
             <input type="text" placeholder="Find your location!" onChange={(evt) => {
               console.log(evt.target.value);
               setSearchQuery(evt.target.value)
               setSelectedItem(searchQuery)
             }} />
-            <button type="submit" onClick={() => {           
+            <button className="searchbarSubmit"type="submit" onClick={() => {           
               fetchWeather(searchQuery)
-            }}>Search</button>
+            }}>Get Weather for Next 10 Days</button>
           </form>
         </div>
       </div>
