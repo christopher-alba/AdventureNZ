@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/AdventureNZ/precache-manifest.ac3147994414549fb042450b22f0e58f.js"
+  "/AdventureNZ/precache-manifest.09b63cb058e68c9947c2cf658d680148.js"
 );
 
 self.addEventListener('message', (event) => {
