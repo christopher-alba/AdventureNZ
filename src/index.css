@@ -7,6 +7,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x:hidden;
   background:url("https://deih43ym53wif.cloudfront.net/travel-to-new-zealand-rough-guides_1436a026cc.jpeg");
+  background-repeat:no-repeat;
+  background-attachment: fixed;
+  background-size:cover;
+
 }
 
 code {
