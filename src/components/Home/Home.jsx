@@ -234,7 +234,7 @@ const Home = (props) => {
             <div className="home-text">
               <p>
                 {" "}
-                <strong>Hey there!</strong> Lorem ipsum dolor sit, amet
+                <strong>Hello there!</strong> Lorem ipsum dolor sit, amet
                 consectetur adipisicing elit. Omnis voluptatibus incidunt enim
                 natus reiciendis expedita veritatis impedit temporibus officiis
                 odio maiores voluptas dolore cumque odit iure alias mollitia,
